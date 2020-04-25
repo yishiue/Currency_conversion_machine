@@ -5,23 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>匯率轉換器</title>
 
-    <link rel="icon" href="./img/wufulogo.png" type="image/x-icon"/>
+    <link rel="icon" href="./icon.png" type="image/x-icon"/>
 
     <!--  jQuery -->
     <script src="js/jquery-3.4.1.js"></script>
-    <!-- Popper.js -->
-    <script src="js/popper.min.js"></script>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="css/bootstrap.css">
     <script src="js/bootstrap.js"></script>
     <!-- FontAwesome -->
     <link href="css/all.css" rel="stylesheet">
-    <!-- Moment -->
-    <script src="js/moment.js"></script>
-    <!-- Bootstrap Table -->
-    <link rel="stylesheet" href="css/bootstrap-table.css">
-    <script src="js/bootstrap-table.js"></script>
-    <script src="js/bootstrap-table-zh-TW.js"></script>
     <!-- Google Font APIs -->
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:400&display=swap&subset=chinese-traditional"
           rel="stylesheet">
@@ -92,51 +84,41 @@
             </div>
         </div>
     </div>
-    <div>
+    <div style="margin-top: 15px">
         <div class="row justify-content-center">
-            <div class="col-2">
+            <div class="col-4">
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1">貨幣表單</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
-                        <option>新台幣</option>
-                        <option>美金</option>
-                        <option>日幣</option>
-                        <option>韓元</option>
-                        <option>英鎊</option>
+                    <label for="select_from">選擇貨幣 從...</label>
+                    <select class="form-control" id="select_from">
+                        <option value="-1" selected disabled>請選擇貨幣...</option>
                     </select>
-
-
                 </div>
             </div>
-            <div class="col-2">
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlSelect1">貨幣表單</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                    <option>新台幣</option>
-                    <option>美金</option>
-                    <option>日幣</option>
-                    <option>韓元</option>
-                    <option>英鎊</option>
-                </select>
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="select_from">貨幣表單 到...</label>
+                    <select class="form-control" id="select_to">
+                        <option value="-1" selected disabled>請選擇貨幣...</option>
+                    </select>
+                </div>
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="form-group col-md-4">
-                <label for="inputEmail4"> 金額</label>
-                <input type="number" class="form-control" id="inputEmail4" placeholder="金額">
+                <label for="input_amount"> 金額</label>
+                <input type="number" class="form-control" id="input_amount" placeholder="金額">
             </div>
             <div class="form-group col-md-4">
-                <label for="inputPassword4">換算結果</label>
-                <input type="number" class="form-control" id="inputPassword4" placeholder="結果">
+                <label for="input_result">換算結果</label>
+                <input type="number" class="form-control" id="input_result" placeholder="結果" readonly>
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-2">
-                <button type="button" class="btn btn-outline-primary btn-block">換算</button>
+                <button type="button" class="btn btn-outline-primary btn-block" id="btn_run">換算</button>
             </div>
             <div class="col-2">
-                <button type="button" class="btn btn-outline-secondary btn-block">取消</button>
+                <button type="button" class="btn btn-outline-secondary btn-block" id="byn_cancel">取消</button>
             </div>
         </div>
     </div>
