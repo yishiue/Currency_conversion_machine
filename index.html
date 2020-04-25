@@ -5,15 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>匯率轉換器</title>
 
-    <link rel="icon" href="./icon.png" type="image/x-icon"/>
+    <link rel="icon" href="./img/icon.png" type="image/x-icon"/>
 
     <!--  jQuery -->
     <script src="js/jquery-3.4.1.js"></script>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="css/bootstrap.css">
     <script src="js/bootstrap.js"></script>
-    <!-- FontAwesome -->
-    <link href="css/all.css" rel="stylesheet">
     <!-- Google Font APIs -->
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:400&display=swap&subset=chinese-traditional"
           rel="stylesheet">
@@ -36,6 +34,10 @@
                 <select class="form-control" id="select_from">
                     <option value="-1" selected disabled>請選擇貨幣...</option>
                 </select>
+            </div>
+            <div style="margin-top: 32px">
+                <button type="button" class="btn btn-outline-dark" id="btn_change"><img src="./img/arrow.png"
+                                                                                        width="25"></button>
             </div>
             <div class="form-group col-md-4">
                 <label for="select_to">選擇貨幣 到...</label>
@@ -64,9 +66,6 @@
         </div>
     </div>
 </div>
-<footer>
-
-</footer>
 </body>
 <script>
     var API_KEY = '3ac1b80cbcc705ca8e99';
@@ -76,7 +75,6 @@
             url: "./currencies.json",
             type: "GET",
             success: function (data) {
-                console.log(data['results']);
                 $.each(data['results'], function (index, val) {
                     $("#select_from").append('<option value="' + val['id'] + '">' + val['id'] + ' (' + val['currencyName'] + ')</option>');
                     $("#select_to").append('<option value="' + val['id'] + '">' + val['id'] + ' (' + val['currencyName'] + ')</option>');
@@ -98,7 +96,6 @@
                     url: 'https://free.currconv.com/api/v7/convert?q=' + str + '&compact=ultra&apiKey=' + API_KEY,
                     type: "GET",
                     success: function (data) {
-                        console.log(data);
                         var result = amount * data[str];
                         $('#input_result').val(result);
                     },
@@ -108,6 +105,14 @@
                 });
             } else
                 alert("輸入不完整");
+        });
+
+        $('#btn_change').click(function () {
+            var tmp = $('#select_to').val();
+            $('#select_to').val($('#select_from').val());
+            $('#select_from').val(tmp);
+            $('#input_amount').val("");
+            $('#input_result').val("");
         });
 
         $('#btn_reset').click(function () {
