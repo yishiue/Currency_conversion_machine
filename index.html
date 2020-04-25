@@ -71,8 +71,8 @@
     var API_KEY = '3ac1b80cbcc705ca8e99';
     $(document).ready(function () {
         $.ajax({
-            //url: "https://free.currconv.com/api/v7/currencies?apiKey=" + API_KEY,
-            url: "./currencies.json",
+            url: "https://free.currconv.com/api/v7/currencies?apiKey=" + API_KEY,
+            //url: "./currencies.json",
             type: "GET",
             success: function (data) {
                 $.each(data['results'], function (index, val) {
