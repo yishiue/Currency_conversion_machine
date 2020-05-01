@@ -52,6 +52,10 @@
                 <input type="number" class="form-control" id="input_amount" placeholder="輸入金額">
             </div>
             <div class="form-group col-md-4">
+                <label for="input_amount">匯率</label>
+                <input type="number" class="form-control" id="show_rate" placeholder="匯率顯示" readonly>
+            </div>
+            <div class="form-group col-md-4">
                 <label for="input_result">換算結果</label>
                 <input type="number" class="form-control" id="input_result" placeholder="顯示結果" readonly>
             </div>
@@ -98,6 +102,7 @@
                     success: function (data) {
                         var result = amount * data[str];
                         $('#input_result').val(result);
+                        $('#show_rate').val(data[str]);
                     },
                     error: function (xhr) {
                         alert("Ajax 發生錯誤");
@@ -113,6 +118,7 @@
             $('#select_from').val(tmp);
             $('#input_amount').val("");
             $('#input_result').val("");
+            $('#show_rate').val("");
         });
 
         $('#btn_reset').click(function () {
@@ -120,6 +126,7 @@
             $('#input_result').val("");
             $('#select_from').val(-1);
             $('#select_to').val(-1);
+            $('#show_rate').val("");
         });
     });
 </script>
